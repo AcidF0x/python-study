@@ -1,5 +1,4 @@
-from calendar import c
-
+from abc import *
 
 class className:
     shareValue = 100
@@ -37,7 +36,17 @@ class className:
     def sayHi():
         return "HI!!"
 
-    
+# 추상클래스
+class absClass(metaclass=ABCMeta):
+    @abstractclassmethod # abs데코레이더들 더 파악해보자
+    def use(self):
+        pass
+
+class implementationAbsClass(absClass):
+    def use(self):
+        print("123")
+        
+
 
 class childClass(className):
     pass #상속시 오버라이딩할 내용이 없다면 pass를 써줘야한다 뭔가 귀여운듯?
