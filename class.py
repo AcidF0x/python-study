@@ -7,23 +7,22 @@ class className:
     """
 
     def __init__(self): # 생성자
-        self._number = 123 
+        self.__number = 123 
         """
-        private 속성이라는 뜻으로 언더바를 붙인다 하지만 IDE를 위한 관습적? 키워드로
+        private 속성이라는 뜻으로 __를 붙인다 하지만 IDE를 위한 관습적? 키워드로
         실제로 접근이 가능하다 파썬은 은닉화를 지원하지 않는듯 하다
-        property를 따로 정의하지 않으므로 생성자에서 다해야하는듯?
         """
     def increase(self):
-        self._number += 1
+        self.__number += 1
     def decrease(self):
-        self._number -= 1
+        self.__number -= 1
+    def getNumber(self):
+        return self.__number
 
 class childClass(className):
     pass #상속시 오버라이딩할 내용이 없다면 pass를 써줘야한다 뭔가 귀여운듯?
 
 class child(className):
-    def __init__(self):
-        self._number = 1
     def increase(self):
         super().increase()
         super().increase() # super로 부모접근이 가능하다
@@ -33,15 +32,15 @@ class child(className):
 test = className()
 test.increase()
 test.decrease()
-print(test._number)
+print(test.getNumber())
 
-className.shareValue = 2000
-print(className.shareValue)
+className.shareValue = 2000 # 이렇게 쓰면 안되겠지? 초기화 시점은 언제인지?
+print(className.shareValue) 
 
 
 test2 = child()
 test2.increase()
-print(test2._number)
+print(test2.getNumber())
 
 
 
